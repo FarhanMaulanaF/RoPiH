@@ -1,7 +1,8 @@
 import pygame
 import serial
-port = 'COM7'
-bautRate = 9600
+port = '/dev/ttyACM0'
+bautRate = 2000000
+import serial
 
 
 try:
@@ -18,8 +19,8 @@ pygame.init()
 pygame.joystick.init()
 
 #define screen size
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 500
+SCREEN_WIDTH = 1280
+SCREEN_HEIGHT = 720
 
 #create game window
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
