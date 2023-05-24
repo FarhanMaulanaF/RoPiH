@@ -72,51 +72,61 @@ while run:
 
 
   for joystick in joysticks:
-    #change player colour with buttons
+    
+    # respon pada button
     if joystick.get_button(0):
-      print('turun kecil')
+      print('A')
     if joystick.get_button(1):
-      print('yaw kanan kecil')
+      print('B')
     if joystick.get_button(2):
-      print('yaw kiri kecil')
+      print('X')
     if joystick.get_button(3):
-      print('atas kecil')
-
+      print('Y')
     if joystick.get_button(4):
-      print('roll kanan capit')
+      print('L1')
     if joystick.get_button(5):
-      print('buka capit')
-    if joystick.get_axis(4) > 0:
-      print('roll kiri capit')
-    if joystick.get_axis(5) > 0 and joystick.get_axis(5) <= 0.5 :
-      print('tutup capit alus')
-    if joystick.get_axis(5) > 0.5:
-      print('tutup capit tajem')
+      print('R1')
 
-    if joystick.get_button(8):
-      print('Analog kiri')
-    if joystick.get_button(9):
-      print('Analog kanan')
+    # respon pada analog
+    # if joystick.get_axis(0) > 0:
+    #   print('Gerak Kanan Analog Kiri')
+    # if joystick.get_axis(0) < 0:
+    #   print('Gerak Kiri Analog Kiri')
+    # if joystick.get_axis(1) > 0:
+    #   print('Gerak Bawah Analog Kiri')
+    # if joystick.get_axis(1) < 0:
+    #   print('Gerak Atas Analog Kiri')
+    if joystick.get_axis(2) > 0 : 
+      print('L2')
+    # if joystick.get_axis(3) > 0:
+    #   print('Gerak Kanan Analog Kanan')
+    # if joystick.get_axis(3) < 0:
+    #   print('Gerak Kiri Analog Kanan')
+    # if joystick.get_axis(4) > 0:
+    #   print('Gerak Bawah Analog Kanan')
+    # if joystick.get_axis(4) < 0:
+    #   print('Gerak Atas Analog Kanan')
+    if joystick.get_axis(5) > 0 : 
+      print('R2')
 
-
-
+    # respon pada button arrow
     hats = joystick.get_numhats()
     for i in range(hats):
       hat = joystick.get_hat(i)
       if hat[0]==-1:
-        print("kiri kecil")
+        print("Arrow Kiri")
         x-=5
       if hat[0]==1:
-        print("kanan kecil")
+        print("Arrow Kanan")
         x+=5
       if hat[1]==-1:
-        print("mundur kecil")
+        print("Arrow Bawah")
         y+=5
       if hat[1]==1:
-        print("maju kecil")
+        print("Arrow Atas")
         y-=5
 
-    #player movement with left analogue sticks
+    # gerak analog kiri
     horiz_move = joystick.get_axis(0)
     vert_move = joystick.get_axis(1)
     if abs(vert_move) > 0.05:
@@ -126,9 +136,9 @@ while run:
       x += horiz_move * 5
       xx = horiz_move * 5
 
-    #player movement with right analogue sticks
-    horiz_move2 = joystick.get_axis(2)
-    vert_move2 = joystick.get_axis(3)
+    # gerak analog kanan
+    horiz_move2 = joystick.get_axis(3)
+    vert_move2 = joystick.get_axis(4)
     if abs(vert_move2) > 0.05:
       y += vert_move2 * 5
       yy2 = vert_move2 * 5
@@ -136,61 +146,64 @@ while run:
       x += horiz_move2 * 5
       xx2 = horiz_move2 * 5
 
-    #Description and transfer code
+    # Vertikal Analog Kiri
     if yy >= 2.5:
-      print('mundur tajem')
+      print('Gerak Bawah Analog Kiri')
       yy = 0
     if yy < 2.5 and yy > 1:
-      print('mundur halus')
+      print('Gerak Bawah Sedikit Analog Kiri')
       yy = 0
 
     if yy <= -2.5:
-      print('maju tajem')
+      print('Gerak Atas Analog Kiri')
       yy = 0
     if yy > -2.5 and yy < -1:
-      print('maju halus')
+      print('Gerak Atas Sedikit Analog Kiri')
       yy = 0
 
+    # Horizontal Analog Kiri
     if xx >= 2.5:
-      print('kanan kepiting tajem')
+      print('Gerak Kanan Analog Kiri')
       xx = 0
     if xx < 2.5 and xx > 1:
-      print('kanan kepiting halus')
+      print('Gerak Kanan Sedikit Analog Kiri')
       xx = 0
 
     if xx <= -2.5:
-      print('kiri kepiting tajem')
+      print('Gerak Kiri Analog Kiri')
       xx = 0
     if xx > -2.5 and xx < -1:
-      print('kiri kepiting halus')
+      print('Gerak Kiri Sedikit Analog Kiri')
       xx = 0
 
+    # Vertikal Analog Kanan
     if yy2 >= 2.5:
-      print('turun tajem')
+      print('Gerak Bawah Analog Kanan')
       yy2 = 0
     if yy2 < 2.5 and yy2 > 1:
-      print('turun halus')
+      print('Gerak Bawah Sedikit Analog Kanan')
       yy2 = 0
 
     if yy2 <= -2.5:
-      print('naik tajem')
+      print('Gerak Atas Analog Kanan')
       yy2 = 0
     if yy2 > -2.5 and yy2 < -1:
-      print('naik halus')
+      print('Gerak Atas Sedikit Analog Kanan')
       yy2 = 0
 
+    # Horizontal Analog Kanan
     if xx2 >= 2.5:
-      print('yaw kanan tajem')
+      print('Gerak Kanan Analog Kanan')
       xx2 = 0
     if xx2 < 2.5 and xx2 > 1:
-      print('yaw kanan halus')
+      print('Gerak Kanan Sedikit Analog Kanan')
       xx2 = 0
 
     if xx2 <= -2.5:
-      print('yaw kiri tajem')
+      print('Gerak Kiri Analog Kanan')
       xx2 = 0
     if xx2 > -2.5 and xx2 < -1:
-      print('yaw kiri halus')
+      print('Gerak Kiri Sedikit Analog Kanan')
       xx2 = 0
 
   #event handler
@@ -206,3 +219,39 @@ while run:
   pygame.display.flip()
 
 pygame.quit()
+
+# KOnfigurasi untuk Linux
+
+# Axis 0 value = -0, analog kiri gerak kiri, 0.992, analog kiri gerak kanan
+# Axis 1 value = -0.992, analog kiri gerak atas, 1, analog kiri gerak bawah
+# Axis 2 value = 1, R2 ditekan, -1,  R2 dilepas
+# Axis 3 value =  -1, analog kanan gerak kiri,  0.992 analog kanan gerak kanan
+# Axis 4 value =  -0.992 analog kanan gerak atas,  1, analog kanan gerak bawah
+# Axis 5 value = 1, L2 ditekan, -1,  L2 dilepas
+
+# Default Value
+# Axis 0 value: 0
+# Axis 1 value: -0
+# Axis 2 value: -1
+# Axis 3 value: 0
+# Axis 4 value: -0
+# Axis 5 value: -1
+
+# Button 0 value: 0 (A)
+# Button 1 value: 0 (B)
+# Button 2 value: 0 (X)
+# Button 3 value: 0 (Y)
+# Button 4 value: 0 (L1)
+# Button 5 value: 0 (R1)
+# Button 6 value: 0 (SELECT)
+# Button 7 value: 0 (START)
+# Button 8 value: 0 (HOME)
+# Button 9 value: 0 (R3)
+# Button 10 value: 0 (L3)
+
+# Hat 0 value: (0,0)
+# Hat 0 value: (0,1) (Arrow Atas)
+# Hat 0 value: (0,-1) (Arrow Bawah)
+# Hat 0 value: (1,0) (Arrowa Kanan)
+# Hat 0 value: (-1,0) (Arrow Kiri)
+
